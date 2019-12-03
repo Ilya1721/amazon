@@ -1,10 +1,30 @@
 html, body {
-    background-color: #fff;
-    color: #636b6f;
     font-family: 'Nunito', 'Open Sans';
     font-weight: 200;
-    height: 100vh;
+    height: 100%;
     margin: 0;
+}
+
+#navbar-image {
+  height: 3rem;
+}
+
+#bg-image {
+  background-image: url('/images/amazon_background.jpg');
+  height: 60vh;
+}
+
+#goods_slider {
+  margin-top: 100px;
+  color: #fff;
+}
+
+#sticky-footer {
+  font-size: 1.5rem;
+}
+
+#brand {
+  font-size: 1.5rem;
 }
 
 .full-height {
@@ -27,25 +47,12 @@ html, body {
     top: 18px;
 }
 
-.content {
-    text-align: center;
-    background-image: url('/images/amazon_background.jpg');
-    width: 100vw;
-    height: 70vh;
-}
-
 .title {
     font-size: 84px;
 }
 
-.links > a {
-    color: #636b6f;
-    padding: 0 25px;
-    font-size: 13px;
-    font-weight: 600;
-    letter-spacing: .1rem;
-    text-decoration: none;
-    text-transform: uppercase;
+#link {
+    font-size: 1.2rem;
 }
 
 .m-b-md {
