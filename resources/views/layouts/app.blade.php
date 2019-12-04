@@ -94,7 +94,8 @@
         @yield('content')
     </main>
 
-    <footer id="sticky-footer" class="py-4 bg-dark page-footer text-white">
+    <footer id="sticky-footer"
+     class="bg-dark text-white">
       <div class="container text-center">
         <small>Copyright &copy; Amazon</small>
       </div>
