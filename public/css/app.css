@@ -1,12 +1,8 @@
 html, body {
     font-family: 'Nunito', 'Open Sans';
     font-weight: 200;
+    height: 100%;
     margin: 0;
-}
-
-html {
-  min-height: 100%;
-  position: relative;
 }
 
 #navbar-image {
@@ -25,11 +21,6 @@ html {
 
 #sticky-footer {
   font-size: 1.5rem;
-  position: absolute;
-  bottom: 0;
-  width: 100%;
-  height: 5.5rem;
-  margin-top: 100px;
 }
 
 #brand {
