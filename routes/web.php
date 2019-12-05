@@ -19,3 +19,5 @@ Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/welcome/filter', 'WelcomeController@filter');
 Route::get('/welcome/sort', 'WelcomeController@sort');
 Route::get('/welcome/search', 'WelcomeController@search');
+
+Route::get('/cart', 'CartController@index');
