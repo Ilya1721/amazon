@@ -5,7 +5,7 @@
 </div>
 <div class="container my-5">
   <h2 class="text-center">All items available</h2>
-  <div class="row d-flex justify-content-center my-2">
+  <div class="row d-flex justify-content-center my-3">
     <form action="/welcome/filter" method="GET" class="form-inline mr-3">
       @csrf
       <div class="input-group">
@@ -15,6 +15,29 @@
             {{ $category->name }}
           </option>
           @endforeach
+          <option value="all">
+            All categories
+          </option>
+        </select>
+        <div class="input-group-append">
+          <button class="btn btn-success" type="submit">
+            Filter<span class="glyphicon glyphicon-search"></span>
+          </button>
+        </div>
+      </div>
+    </form>
+    <form action="/welcome/filter" method="GET" class="form-inline mr-3">
+      @csrf
+      <div class="input-group">
+        <select name="category" class="form-control">
+          @foreach($suppliers as $supplier)
+          <option value="{{ $supplier->id }}">
+            {{ $supplier->name }}
+          </option>
+          @endforeach
+          <option value="all">
+            All suppliers
+          </option>
         </select>
         <div class="input-group-append">
           <button class="btn btn-success" type="submit">
@@ -47,6 +70,7 @@
         <select name="rule" class="form-control w-25">
           <option value="DESC">Descending</option>
           <option value="ASC">Ascending</option>
+          <option value="NOSORT">No sorting</option>
         </select>
         <select name="category" class="form-control input-group-append w-25">
           <option value="price">Price</option>
