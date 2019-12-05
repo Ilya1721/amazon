@@ -52,6 +52,11 @@
                     Cabinet
                   </a>
                 </li>
+                <li class="nav-item">
+                  <a href="/cart" class="nav-link">
+                    <img id="navbar-image" src="/images/shopping_cart.png" />
+                  </a>
+                </li>
               </ul>
 
               <!-- Right Side Of Navbar -->
