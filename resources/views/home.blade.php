@@ -7,28 +7,31 @@
     <table class="table table-light text-center">
       <thead class="thead-dark">
         <th>#</th>
-        <th>Photo</th>
         <th>Name</th>
+        <th>Category</th>
         <th>Price</th>
+        <th>Supplier</th>
         <th></th>
       </thead>
       <tbody>
-        @for($i = 0; $i < 3; $i++)
+        @foreach($items as $item)
         <tr>
-          <td>1</td>
+          <td>{{ $item->id }}</td>
+          <td>{{ $item->name }}</td>
+          <td>{{ $item->category->name }}</td>
+          <td>{{ $item->price }}$</td>
+          <td>{{ $item->supplier->name }}</td>
           <td>
-            <img src="https://images-na.ssl-images-amazon.com/images/I/71sBjbHYbKL._AC_SY200_.jpg"
-            alt="no-image"/>
-          </td>
-          <td>Headphones</td>
-          <td>15.00$</td>
-          <td>
-            <a href="#" class="btn btn-info">
+            <a href="/item/{{ $item->id }}/addToCart"
+               class="btn btn-primary">
+              Add to Cart
+            </a>
+            <a href="/item/{{ $item->id }}/show" class="btn btn-info">
               More Info
             </a>
           </td>
         </tr>
-        @endfor
+        @endforeach
       </tbody>
     </table>
   </div>
