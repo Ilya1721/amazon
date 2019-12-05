@@ -22,4 +22,9 @@ class Item extends Model
     {
       return $this->belongsToMany(Cart::class);
     }
+
+    public function sales()
+    {
+      return $this->belongsToMany(Sale::class);
+    }
 }
