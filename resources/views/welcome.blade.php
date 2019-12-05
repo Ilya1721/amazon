@@ -102,7 +102,8 @@
         <td>{{ $item->price }}$</td>
         <td>{{ $item->supplier->name }}</td>
         <td>
-          <a href="#" class="btn btn-primary">
+          <a href="/item/{{ $item->id }}/addToCart"
+             class="btn btn-primary">
             Add to Cart
           </a>
           <a href="#" class="btn btn-info">

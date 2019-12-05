@@ -4,7 +4,9 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 use App\Cart;
+use App\Item;
 
 class CartController extends Controller
 {
@@ -21,5 +23,18 @@ class CartController extends Controller
       return view('cart', [
         'cart' => $cart,
       ]);
+    }
+
+    public function add($item)
+    {
+      $user = Auth::user();
+
+      DB::table('cart_item')
+          ->insert([
+            'item_id' => $item,
+            'cart_id' => $user->cart->id,
+          ]);
+
+      return redirect('/');
     }
 }
