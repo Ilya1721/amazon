@@ -22,7 +22,8 @@
           <td>{{ $item->price }}$</td>
           <td>{{ $item->supplier->name }}</td>
           <td>
-            <a href="#" class="btn btn-danger">
+            <a href="/item/{{ $item->id }}/deleteFromCart"
+               class="btn btn-danger">
               Delete From Cart
             </a>
             <a href="#" class="btn btn-info">
