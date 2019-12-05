@@ -24,3 +24,4 @@ Route::get('/cart', 'CartController@index');
 
 Route::get('/item/{item}/addToCart', 'CartController@add');
 Route::get('/item/{item}/deleteFromCart', 'CartController@delete');
+Route::get('/item/{item}/show', 'ItemController@index');
