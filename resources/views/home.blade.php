@@ -28,6 +28,13 @@
           </td>
         </tr>
         @endforeach
+        <tr>
+          <td colspan="6">
+            <div id="total-label" class="row justify-content-center">
+              <h5 class="pr-1 text-center">Total:</h5>{{ $total }}$
+            </div>
+          </td>
+        </tr>
       </tbody>
     </table>
   </div>

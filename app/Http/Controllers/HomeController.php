@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use App\Item;
 
 class HomeController extends Controller
@@ -32,8 +33,14 @@ class HomeController extends Controller
                        ->select('items.*')
                        ->get();
 
+        $total = DB::table('sale_item')
+                     ->join('sales', 'sales.id', 'sale_item.sale_id')
+                     ->join('items', 'items.id', 'sale_item.item_id')
+                     ->sum('items.price');
+
         return view('home', [
           'items' => $items,
+          'total' => $total,
         ]);
     }
 }
