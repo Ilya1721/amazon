@@ -21,6 +21,7 @@ Route::get('/welcome/sort', 'WelcomeController@sort');
 Route::get('/welcome/search', 'WelcomeController@search');
 
 Route::get('/cart', 'CartController@index');
+Route::get('/cart/pay', 'CartController@pay');
 
 Route::get('/item/{item}/addToCart', 'CartController@add');
 Route::get('/item/{item}/deleteFromCart', 'CartController@delete');

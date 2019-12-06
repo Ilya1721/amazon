@@ -42,4 +42,9 @@ class User extends Authenticatable
     {
       return $this->belongsTo(Cart::class);
     }
+
+    public function sale()
+    {
+      return $this->belongsTo(Sale::class);
+    }
 }

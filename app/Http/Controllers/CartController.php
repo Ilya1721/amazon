@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use App\Cart;
 use App\Item;
+use App\Sale;
 
 class CartController extends Controller
 {
@@ -55,5 +56,28 @@ class CartController extends Controller
           ->delete();
 
       return redirect('/cart');
+    }
+
+    public function pay()
+    {
+        $items = Cart::query()
+                      ->join('cart_item', 'cart_item.cart_id',
+                             'carts.id')
+                      ->join('items', 'cart_item.item_id',
+                             'items.id')
+                      ->select('items.id')
+                      ->get();
+
+        $sale = Sale::find(Auth::user()->sale->id);
+
+        foreach($items as $item)
+        {
+          DB::table('sale_item')->insert([
+              'sale_id' => $sale->id,
+              'item_id' => $item->id,
+          ]);
+        }
+
+        return redirect('/cart');
     }
 }
