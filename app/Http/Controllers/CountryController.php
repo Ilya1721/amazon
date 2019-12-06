@@ -53,4 +53,13 @@ class CountryController extends Controller
 
       return redirect('/admin/countries');
     }
+
+    public function destroy($country)
+    {
+      $country = Country::find($country);
+
+      $country->delete();
+
+      return redirect('/admin/countries');
+    }
 }

@@ -24,15 +24,20 @@
           <td>{{ $country->name }}</td>
           <td>
             <div class="row">
-            <a href="/admin/countries/{{ $country->id }}/edit"
-               class="btn btn-block w-25 btn-info">
-              Edit
-            </a>
-            <a href="/admin/countries/{{ $country->id }}/destroy"
-               class="btn bn-block w-25 btn-danger ml-2">
-              Delete
-            </a>
-          </div>
+              <a href="/admin/countries/{{ $country->id }}/edit"
+                 class="btn btn-block w-25 btn-info">
+                Edit
+              </a>
+              <form action="/admin/countries/{{ $country->id }}"
+                method="post">
+                @csrf
+                @method('delete')
+                <button type="submit"
+                 class="btn btn-block btn-danger ml-2">
+                  Delete
+                </button>
+              </form>
+            </div>
           </td>
         </tr>
         @endforeach
