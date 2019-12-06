@@ -17,11 +17,11 @@
           <td>{{ $country->name }}</td>
           <td>
             <div class="row">
-            <a href="/country/{{ $country->id }}/edit"
+            <a href="/admin/countries/{{ $country->id }}/edit"
                class="btn btn-block w-25 btn-info">
               Edit
             </a>
-            <a href="/country/{{ $country->id }}/delete"
+            <a href="/admin/countries/{{ $country->id }}/destroy"
                class="btn bn-block w-25 btn-danger ml-2">
               Delete
             </a>

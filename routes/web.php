@@ -27,7 +27,6 @@ Route::get('/item/{item}/addToCart', 'CartController@add');
 Route::get('/item/{item}/deleteFromCart', 'CartController@delete');
 Route::get('/item/{item}/show', 'ItemController@index');
 
-
 Route::group(['prefix' => 'admin'], function () {
     Voyager::routes();
 });

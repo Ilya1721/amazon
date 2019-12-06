@@ -15,4 +15,26 @@ class CountryController extends Controller
         'countries' => $countries,
       ]);
     }
+
+    public function edit($country)
+    {
+      $country = Country::find($country);
+
+      return view('edit_country', [
+        'country' => $country,
+      ]);
+    }
+
+    public function update($country)
+    {
+      $data = request()->validate([
+        'name' => 'required',
+      ]);
+
+      $country = Country::find($country);
+
+      $country->update($data);
+
+      return redirect('/admin/countries');
+    }
 }
