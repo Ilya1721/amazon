@@ -2,8 +2,15 @@
 
 @section('content')
 <div class="container mt-5">
+  <h2 class="text-center">All Countries</h2>
   <div class="row justify-content-center">
-    <h2>All Countries</h2>
+    <a href="/admin/countries/create"
+       class="btn btn-block mb-2 w-50 btn-primary"
+       role="button">
+       Add new Country
+    </a>
+  </div>
+  <div class="row justify-content-center">
     <table class="table table-light text-center">
       <thead class="thead-dark">
         <th>#</th>

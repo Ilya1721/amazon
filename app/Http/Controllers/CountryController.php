@@ -37,4 +37,20 @@ class CountryController extends Controller
 
       return redirect('/admin/countries');
     }
+
+    public function create()
+    {
+      return view('create_country');
+    }
+
+    public function store()
+    {
+      $data = request()->validate([
+        'name' => 'required',
+      ]);
+
+      $country = Country::updateOrCreate($data);
+
+      return redirect('/admin/countries');
+    }
 }
