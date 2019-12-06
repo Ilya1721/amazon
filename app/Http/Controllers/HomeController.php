@@ -24,7 +24,13 @@ class HomeController extends Controller
      */
     public function index()
     {
-        $items = Item::all();
+        $items = Item::query()
+                       ->join('sale_item', 'sale_item.item_id',
+                              'items.id')
+                       ->join('sales', 'sale_item.sale_id',
+                              'sales.id')
+                       ->select('items.*')
+                       ->get();
 
         return view('home', [
           'items' => $items,

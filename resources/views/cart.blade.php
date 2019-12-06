@@ -32,6 +32,21 @@
           </td>
         </tr>
         @endforeach
+        <tr>
+          <td colspan="6">
+            <div id="total-label" class="row justify-content-center">
+              <h5 class="pr-1 text-center">Total:</h5>{{ $total }}$
+            </div>
+            <div class="row justify-content-center">
+              <a href="/cart/buy" class="btn btn-primary ml-2 btn-block w-25"
+                 role="button">
+                <span id="buy-button">
+                  Buy
+                </span>
+              </a>
+            </div>
+          </td>
+        </tr>
       </tbody>
     </table>
   </div>

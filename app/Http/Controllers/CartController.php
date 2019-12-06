@@ -19,9 +19,16 @@ class CartController extends Controller
     {
       $user = Auth::user();
       $cart = $user->cart;
+      $total = Cart::query()
+                     ->join('cart_item', 'cart_item.cart_id',
+                            'carts.id')
+                     ->join('items', 'cart_item.item_id',
+                            'items.id')
+                     ->sum('items.price');
 
       return view('cart', [
         'cart' => $cart,
+        'total' => $total,
       ]);
     }
 
