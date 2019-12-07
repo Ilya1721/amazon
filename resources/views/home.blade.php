@@ -22,7 +22,7 @@
           <td>{{ $item->price }}$</td>
           <td>{{ $item->supplier->name }}</td>
           <td>
-            <a href="/item/{{ $item->id }}/show" class="btn btn-info">
+            <a href="/item/{{ $item->id }}" class="btn btn-info">
               More Info
             </a>
           </td>

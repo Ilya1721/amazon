@@ -26,7 +26,7 @@
                class="btn btn-danger">
               Delete From Cart
             </a>
-            <a href="/item/{{ $item->id }}/show" class="btn btn-info">
+            <a href="/item/{{ $item->id }}" class="btn btn-info">
               More Info
             </a>
           </td>
