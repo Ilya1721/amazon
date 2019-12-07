@@ -80,6 +80,10 @@ class CartController extends Controller
           ]);
         }
 
+        DB::table('cart_item')
+              ->where('cart_item.cart_id', '=', Auth::user()->cart->id)
+              ->delete();
+
         return redirect('/cart');
     }
 }
