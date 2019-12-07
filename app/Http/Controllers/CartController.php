@@ -59,6 +59,36 @@ class CartController extends Controller
       return redirect('/cart');
     }
 
+    public function setInfo()
+    {
+      $cart = Auth::user()->cart;
+
+      $count = DB::table('cart_item')
+                   ->where('cart_item.cart_id', '=', $cart->id)
+                   ->count();
+
+      if($count == 0)
+      {
+        return view('empty_cart');
+      }
+
+      return view('set_info');
+    }
+
+    public function getInfo()
+    {
+      $data = request()->validate([
+        'state' => '',
+        'city' => '',
+        'street' => '',
+        'house' => '',
+        'flat' => '',
+        'phone_number' => '',
+      ]);
+
+      return redirect('/cart/pay');
+    }
+
     public function pay()
     {
         $items = Cart::query()
@@ -84,6 +114,6 @@ class CartController extends Controller
               ->where('cart_item.cart_id', '=', Auth::user()->cart->id)
               ->delete();
 
-        return redirect('/cart');
+        return view('success_payment');
     }
 }

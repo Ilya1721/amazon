@@ -38,7 +38,7 @@
               <h5 class="pr-1 text-center">Total:</h5>{{ $total }}$
             </div>
             <div class="row justify-content-center">
-              <a href="/cart/pay" class="btn btn-primary ml-2 btn-block w-25"
+              <a href="/cart/set_info" class="btn btn-primary ml-2 btn-block w-25"
                  role="button">
                 <span id="buy-button">
                   Buy
