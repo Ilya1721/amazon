@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Auth;
 use App\Item;
 
 class HomeController extends Controller
@@ -30,12 +31,14 @@ class HomeController extends Controller
                               'items.id')
                        ->join('sales', 'sale_item.sale_id',
                               'sales.id')
+                       ->where('sales.id', '=', Auth::user()->sale_id)
                        ->select('items.*')
                        ->get();
 
         $total = DB::table('sale_item')
                      ->join('sales', 'sales.id', 'sale_item.sale_id')
                      ->join('items', 'items.id', 'sale_item.item_id')
+                     ->where('sales.id', '=', Auth::user()->sale_id)
                      ->sum('items.price');
 
         return view('home', [

@@ -25,6 +25,7 @@ class CartController extends Controller
                             'carts.id')
                      ->join('items', 'cart_item.item_id',
                             'items.id')
+                     ->where('carts.id', '=', $cart->id)
                      ->sum('items.price');
 
       return view('cart', [
@@ -65,6 +66,7 @@ class CartController extends Controller
                              'carts.id')
                       ->join('items', 'cart_item.item_id',
                              'items.id')
+                      ->where('carts.id', '=', Auth::user()->cart->id)
                       ->select('items.id')
                       ->get();
 
