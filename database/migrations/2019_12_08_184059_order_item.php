@@ -17,6 +17,7 @@ class OrderItem extends Migration
           $table->bigIncrements('id');
           $table->unsignedBigInteger('order_id');
           $table->unsignedBigInteger('item_id');
+          $table->unsignedBigInteger('user_id');
           $table->timestamp('created_at')->useCurrent();
           $table->timestamp('updated_at')->useCurrent();
       });

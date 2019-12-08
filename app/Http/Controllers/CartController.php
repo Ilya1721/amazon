@@ -8,6 +8,8 @@ use Illuminate\Support\Facades\DB;
 use App\Cart;
 use App\Item;
 use App\Sale;
+use App\Order;
+use App\User;
 
 class CartController extends Controller
 {
@@ -75,7 +77,7 @@ class CartController extends Controller
       return view('set_info');
     }
 
-    public function getInfo()
+    public function pay()
     {
       $data = request()->validate([
         'state' => '',
@@ -85,35 +87,45 @@ class CartController extends Controller
         'flat' => '',
         'phone_number' => '',
       ]);
+      $data['user_id'] = DB::table('users')->where('users.role_id', '=', '1')
+                                           ->select('users.id')->first()->id;
+                                           
+      $items = Cart::query()
+                    ->join('cart_item', 'cart_item.cart_id',
+                           'carts.id')
+                    ->join('items', 'cart_item.item_id',
+                           'items.id')
+                    ->where('carts.id', '=', Auth::user()->cart->id)
+                    ->select('items.id')
+                    ->get();
 
-      return redirect('/cart/pay');
-    }
+      $sale = Sale::find(Auth::user()->sale->id);
 
-    public function pay()
-    {
-        $items = Cart::query()
-                      ->join('cart_item', 'cart_item.cart_id',
-                             'carts.id')
-                      ->join('items', 'cart_item.item_id',
-                             'items.id')
-                      ->where('carts.id', '=', Auth::user()->cart->id)
-                      ->select('items.id')
-                      ->get();
+      $order = Order::create($data);
 
-        $sale = Sale::find(Auth::user()->sale->id);
+      $user = Auth::user();
 
-        foreach($items as $item)
-        {
-          DB::table('sale_item')->insert([
-              'sale_id' => $sale->id,
-              'item_id' => $item->id,
-          ]);
-        }
+      foreach($items as $item)
+      {
+        DB::table('order_item')->insert([
+          'order_id' => $order->id,
+          'user_id' => $user->id,
+          'item_id' => $item->id,
+        ]);
+      }
 
-        DB::table('cart_item')
-              ->where('cart_item.cart_id', '=', Auth::user()->cart->id)
-              ->delete();
+      foreach($items as $item)
+      {
+        DB::table('sale_item')->insert([
+            'sale_id' => $sale->id,
+            'item_id' => $item->id,
+        ]);
+      }
 
-        return view('success_payment');
+      DB::table('cart_item')
+            ->where('cart_item.cart_id', '=', Auth::user()->cart->id)
+            ->delete();
+
+      return view('success_payment');
     }
 }

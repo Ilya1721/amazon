@@ -21,6 +21,7 @@ class CreateOrdersTable extends Migration
             $table->string('street');
             $table->string('house');
             $table->string('flat');
+            $table->string('phone_number');
             $table->timestamp('created_at')->useCurrent();
             $table->timestamp('updated_at')->useCurrent();
         });

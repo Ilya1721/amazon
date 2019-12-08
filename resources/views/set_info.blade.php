@@ -9,7 +9,7 @@
 
         <div class="card-body">
           <form method="POST"
-           action="/cart/get_info">
+           action="/cart/pay">
               @csrf
 
             <div class="form-group row">
@@ -19,7 +19,7 @@
 
               <div class="col-md-6">
                 <input id="state" type="text" class="form-control
-                 @error('state') is-invalid @enderror" state="state"
+                 @error('state') is-invalid @enderror" name="state"
                  value="{{ old('state') }}" required
                  autocomplete="state" autofocus>
 
@@ -38,7 +38,7 @@
 
               <div class="col-md-6">
                 <input id="city" type="text" class="form-control
-                 @error('city') is-invalid @enderror" city="city"
+                 @error('city') is-invalid @enderror" name="city"
                  value="{{ old('city') }}" required
                  autocomplete="city" autofocus>
 
@@ -57,7 +57,7 @@
 
               <div class="col-md-6">
                 <input id="street" type="text" class="form-control
-                 @error('street') is-invalid @enderror" street="street"
+                 @error('street') is-invalid @enderror" name="street"
                  value="{{ old('street') }}" required
                  autocomplete="street" autofocus>
 
@@ -76,7 +76,7 @@
 
               <div class="col-md-6">
                 <input id="house" type="text" class="form-control
-                 @error('house') is-invalid @enderror" house="house"
+                 @error('house') is-invalid @enderror" name="house"
                  value="{{ old('house') }}" required
                  autocomplete="house" autofocus>
 
@@ -95,7 +95,7 @@
 
               <div class="col-md-6">
                 <input id="flat" type="text" class="form-control
-                 @error('flat') is-invalid @enderror" flat="flat"
+                 @error('flat') is-invalid @enderror" name="flat"
                  value="{{ old('flat') }}" required
                  autocomplete="flat" autofocus>
 
@@ -114,7 +114,8 @@
 
               <div class="col-md-6">
                 <input id="phone_number" type="text" class="form-control
-                 @error('phone_number') is-invalid @enderror" phone_number="phone_number"
+                 @error('phone_number') is-invalid @enderror"
+                 name="phone_number"
                  value="{{ old('phone_number') }}" required
                  autocomplete="phone_number" autofocus>
 
