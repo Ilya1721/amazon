@@ -87,9 +87,12 @@ class CartController extends Controller
         'flat' => '',
         'phone_number' => '',
       ]);
-      $data['user_id'] = DB::table('users')->where('users.role_id', '=', '1')
-                                           ->select('users.id')->first()->id;
-                                           
+      $data['user_id'] = DB::table('users')
+                             ->join('roles', 'roles.id',
+                                    'users.role_id')
+                             ->where('roles.name', '=', 'courier')
+                             ->select('users.id')->first()->id;
+
       $items = Cart::query()
                     ->join('cart_item', 'cart_item.cart_id',
                            'carts.id')
