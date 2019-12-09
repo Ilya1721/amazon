@@ -1,15 +1,35 @@
 <!doctype html>
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
+<html>
 <head>
-  <title>Hi!</title>
+  <title>Order #{{ $order->id }}</title>
 </head>
 <body>
-  <h1>Welcome to ItSolutionStuff.com - {{ $title }}</h1>
-	<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-	tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-	quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-	consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-	cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-	proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+  <div>
+    <div>
+      <h2>All orders</h2>
+      <table>
+        <thead>
+          <th>#</th>
+          <th>Phone number</th>
+          <th>State</th>
+          <th>City</th>
+          <th>Street</th>
+          <th>House</th>
+          <th>Flat</th>
+        </thead>
+        <tbody>
+          <tr>
+            <td>{{ $order->id }}</td>
+            <td>{{ $order->phone_number}}</td>
+            <td>{{ $order->state }}</td>
+            <td>{{ $order->city }}</td>
+            <td>{{ $order->street }}</td>
+            <td>{{ $order->house }}</td>
+            <td>{{ $order->flat }}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
 </body>
 </html>

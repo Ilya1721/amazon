@@ -50,11 +50,14 @@ class OrderController extends Controller
       ]);
     }
 
-    public function pdf()
+    public function pdf($order)
     {
-      $data = ['title' => 'Hello World'];
-      $pdf = PDF::loadView('order_pdf', $data);
+      $order = Order::find($order);
 
-      return $pdf->download('order.pdf');    
+      $pdf = PDF::loadView('order_pdf', [
+        'order' => $order,
+      ]);
+
+      return $pdf->download('order.pdf');
     }
 }
