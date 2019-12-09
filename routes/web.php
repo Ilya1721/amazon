@@ -30,6 +30,7 @@ Route::get('/item/{item}', 'ItemController@show');
 
 Route::get('/order', 'OrderController@index');
 Route::get('/order/{order}', 'OrderController@show');
+Route::get('/order/{order}/pdf', 'OrderController@pdf');
 
 Route::group(['prefix' => 'admin'], function () {
     Voyager::routes();

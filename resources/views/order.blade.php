@@ -29,6 +29,9 @@
             <a href="/order/{{ $order->id }}" class="btn btn-info">
               Items
             </a>
+            <a href="/order/{{ $order->id }}/pdf" class="btn btn-primary">
+              To PDF
+            </a>
           </td>
         </tr>
         @endforeach

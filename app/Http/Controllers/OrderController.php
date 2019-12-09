@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
 use App\Item;
 use App\Order;
+use PDF;
 
 class OrderController extends Controller
 {
@@ -47,5 +48,13 @@ class OrderController extends Controller
       return view('order_item', [
         'items' => $items,
       ]);
+    }
+
+    public function pdf()
+    {
+      $data = ['title' => 'Hello World'];
+      $pdf = PDF::loadView('order_pdf', $data);
+
+      return $pdf->download('order.pdf');    
     }
 }
