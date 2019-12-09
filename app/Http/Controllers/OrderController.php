@@ -32,4 +32,20 @@ class OrderController extends Controller
         'orders' => $orders,
       ]);
     }
+
+    public function show($order)
+    {
+      $order = Order::find($order);
+
+      $items = Item::query()
+                     ->join('order_item', 'order_item.item_id',
+                            'items.id')
+                     ->where('order_item.order_id', '=', $order->id)
+                     ->select('items.*')
+                     ->get();
+
+      return view('order_item', [
+        'items' => $items,
+      ]);
+    }
 }
