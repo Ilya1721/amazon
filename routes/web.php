@@ -28,7 +28,8 @@ Route::get('/item/{item}/addToCart', 'CartController@add');
 Route::get('/item/{item}/deleteFromCart', 'CartController@delete');
 Route::get('/item/{item}', 'ItemController@show');
 
-Route::get('/courier', 'CourierController@index');
+Route::get('/order', 'OrderController@index');
+Route::get('/order/{order}', 'OrderController@show');
 
 Route::group(['prefix' => 'admin'], function () {
     Voyager::routes();

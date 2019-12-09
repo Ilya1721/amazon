@@ -4,9 +4,11 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Auth;
 use App\Item;
+use App\Order;
 
-class CourierController extends Controller
+class OrderController extends Controller
 {
     public function index()
     {
@@ -19,9 +21,15 @@ class CourierController extends Controller
                             'users.id')
                      ->select('items.*')->get();
 
+      $user = Auth::user();
 
-      return view('courier', [
-        'items' => $items,
+      $orders = Order::query()
+                       ->where('user_id', '=', $user->id)
+                       ->get();
+
+
+      return view('order', [
+        'orders' => $orders,
       ]);
     }
 }
