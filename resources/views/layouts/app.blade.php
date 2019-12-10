@@ -57,6 +57,22 @@
                     <img id="navbar-image" src="/images/shopping_cart.png" />
                   </a>
                 </li>
+                @auth()
+                @if(Auth::user()->role_id == 1)
+                <li class="nav-item">
+                  <a id="nav-link" class="nav-link text-white" href="/admin">
+                    Admin
+                  </a>
+                </li>
+                @endif
+                @if(Auth::user()->role_id == 3)
+                <li class="nav-item">
+                  <a id="nav-link" class="nav-link text-white" href="/order">
+                    Courier
+                  </a>
+                </li>
+                @endif
+                @endauth
               </ul>
 
               <!-- Right Side Of Navbar -->
