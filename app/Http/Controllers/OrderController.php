@@ -38,13 +38,6 @@ class OrderController extends Controller
     {
       $order = Order::find($order);
 
-      $items = Item::query()
-                     ->join('order_item', 'order_item.item_id',
-                            'items.id')
-                     ->where('order_item.order_id', '=', $order->id)
-                     ->select('items.*')
-                     ->get();
-
       return view('order_item', [
         'items' => $items,
       ]);
@@ -53,9 +46,16 @@ class OrderController extends Controller
     public function pdf($order)
     {
       $order = Order::find($order);
+      $items = Item::query()
+                     ->join('order_item', 'order_item.item_id',
+                            'items.id')
+                     ->where('order_item.order_id', '=', $order->id)
+                     ->select('items.*')
+                     ->get();
 
       $pdf = PDF::loadView('order_pdf', [
         'order' => $order,
+        'items' => $items,
       ]);
 
       return $pdf->download('order.pdf');
